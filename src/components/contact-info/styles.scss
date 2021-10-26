@@ -1,0 +1,72 @@
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  .info-wrapper {
+    padding: 15px;
+    background-color: var(--wrapper-bg);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .remove-from-contacts {
+      width: 100%;
+      font-size: 15px;
+      cursor: pointer;
+
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    div {
+      position: relative;
+
+      .user-avatar-image {
+        height: 150px;
+        width: 150px;
+        margin: 10px;
+        border-radius: 83px;
+      }
+
+      .fas.fa-circle {
+        font-size: 10px;
+        position: absolute;
+        bottom: 14px;
+        right: 28px;
+      }
+    }
+
+    .user-login {
+      font-size: 12px;
+    }
+
+    .user-name {
+      font-size: 20px;
+      font-weight: bolder;
+    }
+  }
+
+  .button-contact-info-wrapper {
+    display: flex;
+    justify-content: center;
+
+    .button-contact-info {
+      margin: 15px;
+      padding: 16px;
+      background-color: var(--wrapper-bg);
+      border-radius: 35px;
+      cursor: pointer;
+      // width: 115px;
+
+      display: flex;
+      justify-content: center;
+
+      &:hover {
+        transition-duration: 1.2s;
+        background-color: rgba(255,255,255,0.1);
+      }
+    }
+  }
+}

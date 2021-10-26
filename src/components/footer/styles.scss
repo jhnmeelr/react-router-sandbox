@@ -1,0 +1,20 @@
+.footer {
+  display: flex;
+
+  button {
+    height: 50px;
+    background-color: inherit;
+    font-size: 17px;
+    cursor: pointer;
+    border: none;
+    flex: 1;
+
+    &:first-child {
+      border-right: 1px solid #ffffff3b;
+    }
+
+    &:nth-child(2) {
+      border-right: 1px solid #ffffff3b;
+    }
+  }
+}
