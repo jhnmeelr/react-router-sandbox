@@ -1,8 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { DELETED_USERNAME } from '../constants';
 import './styles.scss';
+
+import history from '../../history';
+import { DELETED_USERNAME } from '../constants';
 
 class Header extends React.Component {
   handleClickEditMessages = (condition) => {

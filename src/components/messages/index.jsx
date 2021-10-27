@@ -1,6 +1,7 @@
 import React from 'react';
 
 import api from '../api';
+import history from '../../history';
 import InputSearch from '../common/input-search';
 import { formatDate } from '../helpers';
 import { DELETED_USERNAME } from '../constants';

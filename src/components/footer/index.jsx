@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 
 import './styles.scss';
 
+import history from '../../history';
+
 class Footer extends React.Component {
   render () {
     const currentPage = window.location.pathname;
