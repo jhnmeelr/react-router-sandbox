@@ -286,7 +286,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className={`chat theme ${this.state.theme}`}>
           {this.renderHeader()}
           {this.renderContent()}
