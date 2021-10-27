@@ -1,5 +1,4 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 
 import api from '../api';
 import ShowPasswordCheckbox from '../common/show-password-checkbox';
@@ -40,7 +39,7 @@ export default class PrivacyAndSecurity extends React.Component {
     if (data.deleted) {
       this.props.app.setState({ currentUser: null });
       localStorage.removeItem('user');
-      browserHistory.push('/authentication');
+      window.location.replace('/authentication');
     }
   }
 

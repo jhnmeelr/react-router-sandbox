@@ -1,6 +1,5 @@
 import React from 'react';
 import lodash from 'lodash';
-import { browserHistory } from 'react-router';
 
 import api from '../api';
 import InputSearch from '../common/input-search';
@@ -22,7 +21,7 @@ export default class Chats extends React.Component {
     const { chats } = this.props.app.state;
     const chat = chats.find((chat) => chat.id === message.chat);
     this.props.app.setState({ foundMessage: message });
-    browserHistory.push(`/messages/${chat.id}`);
+    window.location.replace(`/messages/${chat.id}`);
   }
 
   tryHighlight = (content) => {
@@ -64,7 +63,7 @@ export default class Chats extends React.Component {
       }
     }
 
-    browserHistory.push(`/messages/${chat.id}`);
+    window.location.replace(`/messages/${chat.id}`);
   }
 
   handleClickDeleteChat = async (chat) => {

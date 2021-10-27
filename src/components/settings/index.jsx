@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link, browserHistory } from 'react-router';
 
 import Themes from '../themes';
 import PrivacyAndSecurity from '../privacy-and-security';
@@ -60,7 +59,7 @@ export default class Settings extends React.Component {
   handleConfirmLogOut = () => {
     this.props.app.setState({ currentUser: null });
     localStorage.removeItem('user');
-    browserHistory.push('/authentication');
+    window.location.replace('/authentication');
   }
 
   handleChangeName = (e) => {

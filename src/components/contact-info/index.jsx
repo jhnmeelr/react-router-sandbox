@@ -1,5 +1,4 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 
 import api from '../api';
 import { getImg } from '../helpers';
@@ -32,7 +31,7 @@ export default class ContactInfo extends React.Component {
     const chat = chats.find((chat) => chat.participants.includes(user.id));
 
     if (chat) {
-      browserHistory.push(`/messages/${chat.id}`)
+      window.location.replace(`/messages/${chat.id}`)
     }
 
     if (!chat) {
@@ -44,7 +43,7 @@ export default class ContactInfo extends React.Component {
 
       if (data.chat) {
         this.props.app.setState({ chats: this.props.app.state.chats.concat(data.chat) });
-        return browserHistory.push(`/messages/${data.chat.id}`);
+        return window.location.replace(`/messages/${data.chat.id}`);
       }
 
       if (data.error) {

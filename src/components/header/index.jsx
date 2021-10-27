@@ -1,10 +1,10 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
 import { DELETED_USERNAME } from '../constants';
 import './styles.scss';
 
-export default class Header extends React.Component {
+class Header extends React.Component {
   handleClickEditMessages = (condition) => {
     this.props.app.setState({ isEditMessages: condition });
   }
@@ -44,10 +44,10 @@ export default class Header extends React.Component {
         {(currentPage === 'chats')
           ? messageToForward
             ? <button onClick={this.handleCancelForwarding}>Cancel</button>
-            :  <button onClick={() => browserHistory.push('/contacts')}><i className="fas fa-plus"></i></button>
+            :  <button onClick={() => window.location.replace('/contacts')}><i className="fas fa-plus"></i></button>
           : ''}
         {[ 'registration', 'contact-info'].includes(currentPage) && (
-          <button onClick={() => browserHistory.goBack()}>
+          <button onClick={() => window.history.go(-1)}>
             <i className="fas fa-long-arrow-alt-left"></i>
           </button>
         )}
@@ -125,3 +125,5 @@ export default class Header extends React.Component {
     )
   }
 }
+
+export default withRouter(Header);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, browserHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import api from '../api';
 
@@ -43,7 +43,7 @@ export default class Authentication extends React.Component {
       });
 
       this.setState({ login: '', password: '' });
-      browserHistory.push('/chats');
+      window.location.replace('/chats');
       localStorage.setItem('user', JSON.stringify(data.user));
     }
   }
@@ -68,6 +68,8 @@ export default class Authentication extends React.Component {
   }
 
   render () {
+    if (this.props.app.state.currentUser) return null;
+
     const { login, inputType, password, isPasswordVisible } = this.state;
 
     return (

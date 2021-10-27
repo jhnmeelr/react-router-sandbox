@@ -1,5 +1,4 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 
 import api from '../api';
 import InputSearch from '../common/input-search';
@@ -85,7 +84,7 @@ export default class Messages extends React.Component {
 
   handleClickForward = (message) => {
     this.props.app.setState({ messageToForward: message });
-    browserHistory.push('/chats');
+    window.location.replace('/chats');
   }
 
   handlePressEnter = (e) => {
@@ -160,7 +159,7 @@ export default class Messages extends React.Component {
   handleClickName = (id) => {
     const user = this.props.app.state.users.find((u) => u.id === id);
     if (user) {
-      browserHistory.push(`/contact-info/${user.id}`);
+      window.location.replace(`/contact-info/${user.id}`);
     }
   }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 
 import api from '../api';
 
@@ -35,7 +34,7 @@ export default class Registration extends React.Component {
       this.props.app.setState({ currentUser: data.user, users: usersData.users });
 
       localStorage.setItem('user', JSON.stringify(data.user));
-      browserHistory.push('/settings');
+      window.location.replace('/settings');
     }
 
     if (data.error) {
@@ -100,6 +99,8 @@ export default class Registration extends React.Component {
   }
 
   render () {
+    if (this.props.app.state.currentUser) return null;
+
     const { isPasswordVisible, inputType } = this.state;
 
     return (

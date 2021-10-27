@@ -1,7 +1,16 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import api from './api';
+
+import Registration from './registration';
+import Authentication from './authentication';
+import Settings from './settings';
+import Contacts from './contacts';
+import ContactInfo from './contact-info';
+import Messages from './messages';
+import Chats from './chats';
+
 import Header from './header';
 import Footer from './footer';
 import PopUp from './pop-up';
@@ -104,10 +113,20 @@ export default class App extends React.Component {
       await this.init(currentUser);
 
       if (!currentPage) {
-        browserHistory.push('/chats');
+        window.location.replace('/chats');
+      }
+
+      if (currentPage === 'authentication') {
+        window.location.replace('/chats');
+      }
+
+      if (currentPage === 'registration') {
+        window.location.replace('/chats');
       }
     } else {
-      browserHistory.push('/authentication');
+      if (currentPage !== 'authentication') {
+        window.location.replace('/authentication');
+      }
     }
   }
 
@@ -228,15 +247,25 @@ export default class App extends React.Component {
 
   renderContent = () => {
     return (
-      React.Children.map(this.props.children, (child) => {
-        if (this.state.currentUser) {
-          return React.cloneElement(child, { app: this });
-        }
-
-        if (['registration', 'authentication'].includes(this.getPage())) {
-          return React.cloneElement(child, { app: this });
-        }
-      })
+      <Switch>
+        <Route path="/registration"><Registration app={this} /></Route>
+        <Route path="/authentication"><Authentication app={this} /></Route>
+        <Route path="/settings"><Settings app={this} /></Route>
+        <Route path="/contacts"><Contacts app={this} /></Route>
+        <Route path="/chats"><Chats app={this} /></Route>
+        <Route
+          path="/messages/:chatId"
+          render={({ match }) => (
+            <Messages app={this} params={match.params} />
+          )}
+        />
+        <Route
+          path="/contact-info/:userId"
+          render={({ match }) => (
+            <ContactInfo app={this} params={match.params} />
+          )}
+        />
+      </Switch>
     )
   }
 
@@ -257,13 +286,15 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className={`chat theme ${this.state.theme}`}>
-        {this.renderHeader()}
-        {this.renderContent()}
-        {this.renderFooter()}
+      <BrowserRouter>
+        <div className={`chat theme ${this.state.theme}`}>
+          {this.renderHeader()}
+          {this.renderContent()}
+          {this.renderFooter()}
 
-        {this.renderPopUp()}
-      </div>
+          {this.renderPopUp()}
+        </div>
+      </BrowserRouter>
     );
   }
 };
