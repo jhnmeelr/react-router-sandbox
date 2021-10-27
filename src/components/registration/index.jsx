@@ -1,6 +1,7 @@
 import React from 'react';
 
 import api from '../api';
+import history from '../../history';
 
 import './styles.scss';
 
@@ -34,7 +35,7 @@ export default class Registration extends React.Component {
       this.props.app.setState({ currentUser: data.user, users: usersData.users });
 
       localStorage.setItem('user', JSON.stringify(data.user));
-      window.location.replace('/settings');
+      history.push('/settings');
     }
 
     if (data.error) {

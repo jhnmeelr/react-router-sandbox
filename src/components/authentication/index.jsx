@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import api from '../api';
+import history from '../../history';
 
 import './styles.scss';
 
@@ -43,7 +44,7 @@ export default class Authentication extends React.Component {
       });
 
       this.setState({ login: '', password: '' });
-      window.location.replace('/chats');
+      history.push('/chats');
       localStorage.setItem('user', JSON.stringify(data.user));
     }
   }

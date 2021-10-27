@@ -13,13 +13,13 @@ class Footer extends React.Component {
 
     return (
       <div className="footer">
-        <button onClick={() => window.location.replace('/contacts')}>
+        <button onClick={() => history.push('/contacts')}>
           <i className="far fa-address-book"></i>
         </button>
-        <button onClick={() => window.location.replace('/chats')}>
+        <button onClick={() => history.push('/chats')}>
           <i className="far fa-comments"></i>
         </button>
-        <button onClick={() => window.location.replace('/settings')}>
+        <button onClick={() => history.push('/settings')}>
           <i className="fas fa-cog"></i>
         </button>
       </div>

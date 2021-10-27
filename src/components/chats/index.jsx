@@ -2,6 +2,7 @@ import React from 'react';
 import lodash from 'lodash';
 
 import api from '../api';
+import history from '../../history';
 import InputSearch from '../common/input-search';
 import { getImg, formatDate } from '../helpers';
 import { DELETED_USERNAME } from '../constants';
@@ -21,7 +22,7 @@ export default class Chats extends React.Component {
     const { chats } = this.props.app.state;
     const chat = chats.find((chat) => chat.id === message.chat);
     this.props.app.setState({ foundMessage: message });
-    window.location.replace(`/messages/${chat.id}`);
+    history.push(`/messages/${chat.id}`);
   }
 
   tryHighlight = (content) => {
@@ -63,7 +64,7 @@ export default class Chats extends React.Component {
       }
     }
 
-    window.location.replace(`/messages/${chat.id}`);
+    history.push(`/messages/${chat.id}`);
   }
 
   handleClickDeleteChat = async (chat) => {

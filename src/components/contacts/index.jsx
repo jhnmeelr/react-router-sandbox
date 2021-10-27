@@ -1,6 +1,7 @@
 import React from 'react';
 
 import api from '../api';
+import history from '../../history';
 import { getImg } from '../helpers';
 import InputSearch from '../common/input-search';
 import './styles.scss';
@@ -30,7 +31,7 @@ export default class Contacts extends React.Component {
 
   handleClickOpenContactInfo = (user) => {
     this.props.app.setState({ isSearch: false })
-    window.location.replace(`/contact-info/${user.id}`);
+    history.push(`/contact-info/${user.id}`);
   }
 
   handleClickContact = async (user) => {
@@ -38,7 +39,7 @@ export default class Contacts extends React.Component {
 
     if (isSearch) {
       this.props.app.setState({ isSearch: false })
-      return window.location.replace(`/contact-info/${user.id}`)
+      return history.push(`/contact-info/${user.id}`)
     }
 
     const isChatExist = chats.find((chat) => {
@@ -53,7 +54,7 @@ export default class Contacts extends React.Component {
     if (isChatExist) {
       const chatId = chats.find((chat) => (chat.participants.includes(user.id) && chat.participants.includes(currentUser.id))).id;
 
-      return window.location.replace(`/messages/${chatId}`);
+      return history.push(`/messages/${chatId}`);
     }
 
     if (!isChatExist) {
@@ -64,7 +65,7 @@ export default class Contacts extends React.Component {
 
       if (data.chat) {
         this.props.app.setState({ chats: this.props.app.state.chats.concat(data.chat) });
-        return window.location.replace(`/messages/${data.chat.id}`);
+        return history.push(`/messages/${data.chat.id}`);
       }
 
       if (data.error) {

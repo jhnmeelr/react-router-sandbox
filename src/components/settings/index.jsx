@@ -1,11 +1,14 @@
 import React from 'react';
 
-import Themes from '../themes';
-import PrivacyAndSecurity from '../privacy-and-security';
 import './styles.scss';
 import './change-avatar-menu.scss';
-import { getImg } from '../helpers';
+
+import history from '../../history';
 import noAvatar from '../tg-imgs/no-avatar.png';
+import { getImg } from '../helpers';
+
+import Themes from '../themes';
+import PrivacyAndSecurity from '../privacy-and-security';
 
 export default class Settings extends React.Component {
   constructor(props) {
@@ -59,7 +62,7 @@ export default class Settings extends React.Component {
   handleConfirmLogOut = () => {
     this.props.app.setState({ currentUser: null });
     localStorage.removeItem('user');
-    window.location.replace('/authentication');
+    history.push('/authentication');
   }
 
   handleChangeName = (e) => {

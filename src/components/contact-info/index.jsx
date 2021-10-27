@@ -1,6 +1,7 @@
 import React from 'react';
 
 import api from '../api';
+import history from '../../history';
 import { getImg } from '../helpers';
 import './styles.scss';
 
@@ -31,7 +32,7 @@ export default class ContactInfo extends React.Component {
     const chat = chats.find((chat) => chat.participants.includes(user.id));
 
     if (chat) {
-      window.location.replace(`/messages/${chat.id}`)
+      history.push(`/messages/${chat.id}`)
     }
 
     if (!chat) {
@@ -43,7 +44,7 @@ export default class ContactInfo extends React.Component {
 
       if (data.chat) {
         this.props.app.setState({ chats: this.props.app.state.chats.concat(data.chat) });
-        return window.location.replace(`/messages/${data.chat.id}`);
+        return history.push(`/messages/${data.chat.id}`);
       }
 
       if (data.error) {

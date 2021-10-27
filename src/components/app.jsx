@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import api from './api';
+import history from '../history';
 
 import Registration from './registration';
 import Authentication from './authentication';
@@ -113,19 +114,19 @@ export default class App extends React.Component {
       await this.init(currentUser);
 
       if (!currentPage) {
-        window.location.replace('/chats');
+        history.push('/chats');
       }
 
       if (currentPage === 'authentication') {
-        window.location.replace('/chats');
+        history.push('/chats');
       }
 
       if (currentPage === 'registration') {
-        window.location.replace('/chats');
+        history.push('/chats');
       }
     } else {
       if (currentPage !== 'authentication') {
-        window.location.replace('/authentication');
+        history.push('/authentication');
       }
     }
   }
@@ -286,15 +287,13 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <div className={`chat theme ${this.state.theme}`}>
-          {this.renderHeader()}
-          {this.renderContent()}
-          {this.renderFooter()}
+      <div className={`chat theme ${this.state.theme}`}>
+        {this.renderHeader()}
+        {this.renderContent()}
+        {this.renderFooter()}
 
-          {this.renderPopUp()}
-        </div>
-      </BrowserRouter>
+        {this.renderPopUp()}
+      </div>
     );
   }
 };

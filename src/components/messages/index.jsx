@@ -84,7 +84,7 @@ export default class Messages extends React.Component {
 
   handleClickForward = (message) => {
     this.props.app.setState({ messageToForward: message });
-    window.location.replace('/chats');
+    history.push('/chats');
   }
 
   handlePressEnter = (e) => {
@@ -159,7 +159,7 @@ export default class Messages extends React.Component {
   handleClickName = (id) => {
     const user = this.props.app.state.users.find((u) => u.id === id);
     if (user) {
-      window.location.replace(`/contact-info/${user.id}`);
+      history.push(`/contact-info/${user.id}`);
     }
   }
 

@@ -44,7 +44,7 @@ class Header extends React.Component {
         {(currentPage === 'chats')
           ? messageToForward
             ? <button onClick={this.handleCancelForwarding}>Cancel</button>
-            :  <button onClick={() => window.location.replace('/contacts')}><i className="fas fa-plus"></i></button>
+            :  <button onClick={() => history.push('/contacts')}><i className="fas fa-plus"></i></button>
           : ''}
         {[ 'registration', 'contact-info'].includes(currentPage) && (
           <button onClick={() => window.history.go(-1)}>
